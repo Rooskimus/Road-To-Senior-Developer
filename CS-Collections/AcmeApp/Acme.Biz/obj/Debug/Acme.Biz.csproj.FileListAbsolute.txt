@@ -1,9 +1,0 @@
-C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Acme.Biz\bin\Debug\Acme.Biz.dll
-C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Acme.Biz\bin\Debug\Acme.Biz.pdb
-C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Acme.Biz\bin\Debug\Acme.Common.dll
-C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Acme.Biz\bin\Debug\Acme.Common.pdb
-C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Acme.Biz\obj\Debug\Acme.Biz.csprojAssemblyReference.cache
-C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Acme.Biz\obj\Debug\Acme.Biz.csproj.CoreCompileInputs.cache
-C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Acme.Biz\obj\Debug\Acme.Biz.csproj.CopyComplete
-C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Acme.Biz\obj\Debug\Acme.Biz.dll
-C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Acme.Biz\obj\Debug\Acme.Biz.pdb
