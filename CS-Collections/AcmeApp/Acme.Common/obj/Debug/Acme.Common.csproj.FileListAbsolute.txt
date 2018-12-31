@@ -1,0 +1,6 @@
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Acme.Common\bin\Debug\Acme.Common.dll
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Acme.Common\bin\Debug\Acme.Common.pdb
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Acme.Common\obj\Debug\Acme.Common.csprojAssemblyReference.cache
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Acme.Common\obj\Debug\Acme.Common.csproj.CoreCompileInputs.cache
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Acme.Common\obj\Debug\Acme.Common.dll
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Acme.Common\obj\Debug\Acme.Common.pdb

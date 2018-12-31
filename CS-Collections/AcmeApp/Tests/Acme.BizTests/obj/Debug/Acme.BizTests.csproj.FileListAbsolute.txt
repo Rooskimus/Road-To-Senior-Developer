@@ -1,0 +1,12 @@
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Tests\Acme.BizTests\bin\Debug\Acme.BizTests.dll
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Tests\Acme.BizTests\bin\Debug\Acme.BizTests.pdb
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Tests\Acme.BizTests\bin\Debug\Acme.Biz.dll
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Tests\Acme.BizTests\bin\Debug\Acme.Common.dll
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Tests\Acme.BizTests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Tests\Acme.BizTests\bin\Debug\Acme.Biz.pdb
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Tests\Acme.BizTests\bin\Debug\Acme.Common.pdb
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Tests\Acme.BizTests\obj\Debug\Acme.BizTests.csprojAssemblyReference.cache
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Tests\Acme.BizTests\obj\Debug\Acme.BizTests.csproj.CoreCompileInputs.cache
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Tests\Acme.BizTests\obj\Debug\Acme.BizTests.csproj.CopyComplete
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Tests\Acme.BizTests\obj\Debug\Acme.BizTests.dll
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Tests\Acme.BizTests\obj\Debug\Acme.BizTests.pdb

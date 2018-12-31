@@ -1,0 +1,15 @@
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Acme.Win\bin\Debug\Acme.Win.exe.config
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Acme.Win\bin\Debug\Acme.Win.exe
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Acme.Win\bin\Debug\Acme.Win.pdb
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Acme.Win\bin\Debug\Acme.Biz.dll
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Acme.Win\bin\Debug\Acme.Common.dll
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Acme.Win\bin\Debug\Acme.Biz.pdb
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Acme.Win\bin\Debug\Acme.Common.pdb
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Acme.Win\obj\Debug\Acme.Win.csprojAssemblyReference.cache
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Acme.Win\obj\Debug\Acme.Win.Properties.Resources.resources
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Acme.Win\obj\Debug\Acme.Win.VendorWin.resources
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Acme.Win\obj\Debug\Acme.Win.csproj.GenerateResource.cache
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Acme.Win\obj\Debug\Acme.Win.csproj.CoreCompileInputs.cache
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Acme.Win\obj\Debug\Acme.Win.csproj.CopyComplete
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Acme.Win\obj\Debug\Acme.Win.exe
+C:\Users\Roo\Documents\GitHub\Road-To-Senior-Developer\CS-Collections\CSharpBP-Collections\AcmeApp\Acme.Win\obj\Debug\Acme.Win.pdb
