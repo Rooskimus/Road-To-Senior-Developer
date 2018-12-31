@@ -31,7 +31,7 @@ namespace Acme.Biz
             return vendor;
         }
 
-        public ICollection<Vendor> Retrieve()
+        public IEnumerable<Vendor> Retrieve()
         {
             if (vendors == null)
             {
