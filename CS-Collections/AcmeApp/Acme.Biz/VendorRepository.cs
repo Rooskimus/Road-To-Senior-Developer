@@ -50,6 +50,56 @@ namespace Acme.Biz
             return vendors;
         }
 
+        /// <summary>
+        /// Retrieves all of the vendors
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Vendor> RetrieveAll()
+        {
+            if (vendors == null)
+            {
+                vendors = new List<Vendor>() {
+                    { new Vendor()
+                        { VendorId = 1, CompanyName = "ABC Corp", Email = "abc@abc.com" } },
+                    { new Vendor()
+                        { VendorId = 2, CompanyName = "XYZ Inc", Email = "xyz@xyz.com" } },
+                    { new Vendor()
+                        { VendorId = 12, CompanyName = "EFG Ltd", Email = "efg@efg.com" } },
+                    { new Vendor()
+                        { VendorId = 17, CompanyName = "HIJ AG", Email = "hij@hij.com" } },
+                    { new Vendor()
+                        { VendorId = 22, CompanyName = "Amalgamated Toys", Email = "a@abc.com" } },
+                    { new Vendor()
+                        { VendorId = 28, CompanyName = "Toy Blocks Inc", Email = "blocks@abc.com" } },
+                    { new Vendor()
+                        { VendorId = 31, CompanyName = "Home Products Inc", Email = "home@abc.com" } },
+                    { new Vendor()
+                        { VendorId = 35, CompanyName = "Car Toys", Email = "car@abc.com" } },
+                    { new Vendor()
+                        { VendorId = 42, CompanyName = "Toys for Fun", Email = "fun@abc.com" } }
+                };
+                return vendors;
+            }
+            
+            foreach (var vendor in vendors)
+            {
+                Console.WriteLine(vendor);
+            }
+
+            return vendors;
+        }
+
+        public IEnumerable<Vendor> RetrieveWithIterator()
+        {
+            this.Retrieve();
+
+            foreach(var vendor in vendors)
+            {
+                Console.WriteLine($"Vendor Id: {vendor.VendorId}");
+                yield return vendor;
+            }
+        }
+
         public T RetrieveValue<T>(string sql, T defaultValue)
         {
             //call the database to retrieve the value
