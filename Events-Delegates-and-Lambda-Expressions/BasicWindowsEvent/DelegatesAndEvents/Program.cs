@@ -16,15 +16,18 @@ namespace DelegatesAndEvents
 
         static void Main(string[] args)
         {
+            var data = new ProcessData();
             BizRulesDelegate addDel = (x, y) => x + y;
             BizRulesDelegate multDel = (x, y) => x * y;
-
-            var data = new ProcessData();
-            //data.Process(2, 3, multDel);
-
             Action<int, int> myAction = (x, y) => Console.WriteLine(x + y);
             Action<int, int> myMultAction = (x, y) => Console.WriteLine(x * y);
-            data.ProcessAction(2, 3, myAction);
+            //data.ProcessAction(2, 3, myAction);
+
+            Func<int, int, int> funcAddDel = (x, y) => x + y;
+            Func<int, int, int> funcMultDel = (x, y) => x * y;
+            data.ProcessFunc(3, 2, funcAddDel);
+
+
 
             var worker = new Worker();
             worker.WorkPerformed += delegate (object sender, WorkPerformedEventArgs e)
