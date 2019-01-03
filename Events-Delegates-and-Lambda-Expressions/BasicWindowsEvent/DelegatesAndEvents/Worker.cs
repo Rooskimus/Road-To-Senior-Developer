@@ -16,6 +16,7 @@ namespace DelegatesAndEvents
         {
             for (int i = 0; i < hours; i++)
             {
+                System.Threading.Thread.Sleep(1000);
                 OnWorkPerformed(i + 1, workType);
             }
             OnWorkCompleted();
@@ -48,5 +49,13 @@ namespace DelegatesAndEvents
                 del(this, EventArgs.Empty);
             }
         }
+
+        public enum WorkType
+        {
+            GoToMeetings,
+            Golf,
+            GenerateReports
+        }
+
     }
 }
