@@ -20,7 +20,11 @@ namespace DelegatesAndEvents
             BizRulesDelegate multDel = (x, y) => x * y;
 
             var data = new ProcessData();
-            data.Process(2, 3, multDel);
+            //data.Process(2, 3, multDel);
+
+            Action<int, int> myAction = (x, y) => Console.WriteLine(x + y);
+            Action<int, int> myMultAction = (x, y) => Console.WriteLine(x * y);
+            data.ProcessAction(2, 3, myAction);
 
             var worker = new Worker();
             worker.WorkPerformed += delegate (object sender, WorkPerformedEventArgs e)
