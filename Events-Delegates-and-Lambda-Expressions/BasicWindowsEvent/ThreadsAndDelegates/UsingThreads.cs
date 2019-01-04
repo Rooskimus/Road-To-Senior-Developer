@@ -22,10 +22,10 @@ namespace ThreadsAndDelegates
         }
 
         [STAThread]
-        public static void Main(string[] args)
-        {
-            Application.Run(new UsingThreads());
-        }
+        //public static void Main(string[] args)
+        //{
+        //    Application.Run(new UsingThreads());
+        //}
 
         private void StartButton_Click(object sender, EventArgs e)
         {
