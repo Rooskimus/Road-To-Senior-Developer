@@ -63,6 +63,12 @@
       <DependentUpon>BackgroundWorker.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UsingThreads.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UsingThreads.Designer.cs">
+      <DependentUpon>UsingThreads.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -76,6 +82,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BackgroundWorker.resx">
       <DependentUpon>BackgroundWorker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsingThreads.resx">
+      <DependentUpon>UsingThreads.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -17,10 +17,10 @@ namespace ThreadsAndDelegates
             InitializeComponent();
         }
 
-        public static void Main()
-        {
-            Application.Run(new BackgroundWorkerDemo());
-        }
+        //public static void Main()
+        //{
+        //    Application.Run(new BackgroundWorkerDemo());
+        //}
 
 
         private void StartButton_Click(object sender, EventArgs e)
