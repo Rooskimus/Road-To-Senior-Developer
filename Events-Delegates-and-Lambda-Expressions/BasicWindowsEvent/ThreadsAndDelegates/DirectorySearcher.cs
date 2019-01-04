@@ -1,22 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using System.Windows.Forms;
-using System.Threading;
-
-//Note: this is not fully functioning; the tutorial did not cover all steps needed
-// to produce the entire code, nor did it provide any base code.
-namespace ThreadsAndDelegates
+﻿namespace ThreadsAndDelegates
 {
+    using System;
+    using System.IO;
+    using System.Threading;
+    using System.Windows.Forms;
+
+    /// <summary>
+    ///      This class is a Windows Forms control that implements a simple directory searcher.
+    ///      You provide, through code, a search string and it will search directories on
+    ///      a background thread, populating its list box with matches.
+    /// </summary>
     public class DirectorySearcher : Control
     {
+
         public event EventHandler SearchComplete;
 
-        //Define a special delegate thtat handles marshaling
-        //lists of file names from the background directory search
-        //thread to the thread that contains the list box.
+        // Define a special delegate that handles marshaling
+        // lists of file names from the background directory search
+        // thread to the thread that contains the list box.
         private delegate void FileListDelegate(string[] files, int startIndex, int count);
 
         private ListBox _ListBox;
@@ -47,19 +48,41 @@ namespace ThreadsAndDelegates
             set
             {
                 // If currently searching, abort
-                // the search and restart it after setting
-                // the new criteria.
+                // the search and restart it after
+                // setting the new criteria.
+                //
+                bool wasSearching = Searching;
 
+                if (wasSearching)
+                {
+                    StopSearch();
+                }
+
+                _ListBox.Items.Clear();
+                _SearchCriteria = value;
+
+                if (wasSearching)
+                {
+                    BeginSearch();
+                }
+            }
+        }
+
+        public bool Searching
+        {
+            get
+            {
+                return _Searching;
             }
         }
 
         public void BeginSearch()
         {
-            if (_Searching) return;
+            if (Searching) return;
 
-            //Start the search if the handle has
-            //been created.  Otherwise, defer it until the
-            //handle has been created.
+            // Start the search if the handle has
+            // been created. Otherwise, defer it until the
+            // handle has been created.
             if (IsHandleCreated)
             {
                 _SearchThread = new Thread(new ThreadStart(ThreadProcedure));
@@ -78,21 +101,23 @@ namespace ThreadsAndDelegates
             {
                 string localSearch = SearchCriteria;
 
-                //Now, search the file system.
+                // Now, search the file system.
+                //
                 RecurseDirectory(localSearch);
             }
             finally
             {
-                //You are done with the search, so update.
+                // You are done with the search, so update.
+                //
                 _Searching = false;
 
-                //Raise an event that notifies the user that
-                //the search has been terminated.
-                //You do not have to do this through a marshaled call,
-                //but marshaling is recommended for the following reason:
-                //Users of this control do not know that it is
-                //multithreaded, so they expect its events to come back on
-                //the same thread as the control.
+                // Raise an event that notifies the user that
+                // the search has terminated.  
+                // You do not have to do this through a marshaled call, but
+                // marshaling is recommended for the following reason:
+                // Users of this control do not know that it is
+                // multithreaded, so they expect its events to 
+                // come back on the same thread as the control
                 BeginInvoke(_OnSearchComplete, new object[] { this, EventArgs.Empty });
             }
         }
@@ -111,22 +136,31 @@ namespace ThreadsAndDelegates
             {
                 return;
             }
+
             if (_SearchThread.IsAlive)
             {
                 _SearchThread.Abort();
                 _SearchThread.Join();
             }
+
             _SearchThread = null;
             _Searching = false;
         }
 
+        /// <summary>
+        /// Recurses the given path, adding all files on that path to 
+        /// the list box. After it finishes with the files, it
+        /// calls itself once for each directory on the path.
+        /// </summary>
+        /// <param name="searchPath"></param>
         private void RecurseDirectory(string searchPath)
         {
-            //Split searchPath into a directory and a wildcard specification.
+            // Split searchPath into a directory and a wildcard specification.
+            //
             string directory = Path.GetDirectoryName(searchPath);
             string search = Path.GetFileName(searchPath);
 
-            if(directory == null || search == null)
+            if (directory == null || search == null)
             {
                 return;
             }
@@ -150,18 +184,22 @@ namespace ThreadsAndDelegates
 
             while (startingIndex < files.Length)
             {
-                //Batch up to 20 files at once, unless at the end.
+                // Batch up 20 files at once, unless at the
+                // end.
+                //
                 int count = 20;
                 if (count + startingIndex >= files.Length)
                 {
                     count = files.Length - startingIndex;
                 }
 
-                //Begin the cross-thread call.
+                // Begin the cross-thread call. 
                 IAsyncResult r = BeginInvoke(_FileListDelegate, new object[] { files, startingIndex, count });
                 startingIndex += count;
             }
-            //Now that you have finished the files in this directory, recurse for each subdirectory.
+
+            // Now that you have finished the files in this directory, recurse for
+            // each subdirectory.
             string[] directories = Directory.GetDirectories(directory);
             foreach (string d in directories)
             {
@@ -169,7 +207,7 @@ namespace ThreadsAndDelegates
             }
         }
 
-        //Data routed from secondary thread back to main thread
+        //Data routed from secondary thread by back to main thread
         //so safe to update _Listbox
         private void AddFiles(string[] files, int startIndex, int count)
         {
@@ -181,13 +219,24 @@ namespace ThreadsAndDelegates
 
         protected override void OnHandleDestroyed(EventArgs e)
         {
-            //If the handle is being destroyed and you are not
-            //recreating it, then abort the search.
+            // If the handle is being destroyed and you are not
+            // recreating it, then abort the search.
             if (!RecreatingHandle)
             {
-                //TODO fill in here
+                StopSearch();
             }
             base.OnHandleDestroyed(e);
         }
+
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            base.OnHandleCreated(e);
+            if (_DeferSearch)
+            {
+                _DeferSearch = false;
+                BeginSearch();
+            }
+        }
     }
 }
+

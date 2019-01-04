@@ -17,6 +17,7 @@ namespace ThreadsAndDelegates
             InitializeComponent();
         }
 
+        [STAThread]
         static void Main()
         {
             Application.Run(new DirectorySearcherForm());
@@ -27,13 +28,11 @@ namespace ThreadsAndDelegates
             SearchLabel.Text = string.Empty;
         }
 
-        private void SearchButton_Click(object sender, EventArgs e)
+        private void SearchButton_Click_1(object sender, EventArgs e)
         {
-            DirectorySearcher directorySearcher = new DirectorySearcher();
-            directorySearcher.SearchCriteria = SearchBar.Text;
+            directorySearcher.SearchCriteria = searchText.Text;
             SearchLabel.Text = "Searching...";
             directorySearcher.BeginSearch();
-
         }
     }
 }
