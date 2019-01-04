@@ -44,6 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsyncGood.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AsyncGood.Designer.cs">
+      <DependentUpon>AsyncGood.cs</DependentUpon>
+    </Compile>
     <Compile Include="AsyncBad.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -56,6 +62,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AsyncGood.resx">
+      <DependentUpon>AsyncGood.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AsyncBad.resx">
       <DependentUpon>AsyncBad.cs</DependentUpon>
     </EmbeddedResource>
