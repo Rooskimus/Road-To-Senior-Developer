@@ -21,10 +21,10 @@ namespace ThreadsAndDelegates
             InitializeComponent();
         }
 
-        public static void Main()
-        {
-            Application.Run(new AsyncGood());
-        }
+        //public static void Main()
+        //{
+        //    Application.Run(new AsyncGood());
+        //}
 
         private void StartButton_Click(object sender, System.EventArgs e)
         {

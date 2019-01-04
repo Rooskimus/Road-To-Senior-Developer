@@ -56,6 +56,12 @@
     <Compile Include="AsyncBad.Designer.cs">
       <DependentUpon>AsyncBad.cs</DependentUpon>
     </Compile>
+    <Compile Include="BackgroundWorker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackgroundWorker.Designer.cs">
+      <DependentUpon>BackgroundWorker.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +73,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AsyncBad.resx">
       <DependentUpon>AsyncBad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackgroundWorker.resx">
+      <DependentUpon>BackgroundWorker.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
