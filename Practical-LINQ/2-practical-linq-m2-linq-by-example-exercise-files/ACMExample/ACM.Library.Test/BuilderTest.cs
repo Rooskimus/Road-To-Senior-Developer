@@ -106,5 +106,65 @@ namespace ACM.Library.Test
             //Assert
             Assert.IsNotNull(result);
         }
+
+        [TestMethod]
+        public void CompareSequenceTest()
+        {
+            //Arrange
+            Builder listBuilder = new Builder();
+
+            //Act
+
+            var result = listBuilder.CompareSequences();
+
+            //Analyze
+            foreach (var item in result)
+            {
+                TestContext.WriteLine(item.ToString());
+            }
+
+            //Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void CompareSequenceExceptTest()
+        {
+            //Arrange
+            Builder listBuilder = new Builder();
+
+            //Act
+
+            var result = listBuilder.CompareSequencesExcept();
+
+            //Analyze
+            foreach (var item in result)
+            {
+                TestContext.WriteLine(item.ToString());
+            }
+
+            //Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void CompareSequenceConcatTest()
+        {
+            //Arrange
+            Builder listBuilder = new Builder();
+
+            //Act
+
+            var result = listBuilder.CompareSequencesConcat();
+
+            //Analyze
+            foreach (var item in result)
+            {
+                TestContext.WriteLine(item.ToString());
+            }
+
+            //Assert
+            Assert.IsNotNull(result);
+        }
     }
 }
