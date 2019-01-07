@@ -77,6 +77,26 @@ namespace ACM.BL.Test
         }
 
         [TestMethod]
+        public void GetOverdueCustomersTest()
+        {
+            // Arrange
+            CustomerRepository repository = new CustomerRepository();
+            var customerList = repository.Retrieve();
+
+            // Act
+            var query = repository.GetOverdueCustomers(customerList);
+
+            // Analyze
+            foreach (var item in query)
+            {
+                TestContext.WriteLine($"{item.FirstName} {item.LastName}");
+            }
+
+            //Assert
+            Assert.IsNotNull(query);
+        }
+
+        [TestMethod]
         public void SortByNameTest()
         {
             // Arrange
