@@ -139,6 +139,32 @@ namespace ACM.BL
             return query;
         }
 
+        public IEnumerable<KeyValuePair<string, decimal>> GetInvoiceTotalByCustomerType(List<Customer> customerList, 
+                                                        List<CustomerType> customerTypeList)
+        {
+            var customerTypeQuery = customerList.Join(customerTypeList,  //Inner table
+                                            c => c.CustomerTypeId,       //Outer Key Selector  \
+                                                                         //                     ----> Where tables join
+                                            ct => ct.CustomerTypeId,     //Inner Key Selector  /
+                                            (c, ct) => new               //Result Selector/Filter
+                                            {
+                                                CustomerInstance = c,
+                                                CustomerTypeName = ct.TypeName
+                                            });
+
+            var query = customerTypeQuery.GroupBy(c => c.CustomerTypeName,
+                                   c => c.CustomerInstance.InvoiceList.Sum(inv => inv.TotalAmount),
+                                   (groupKey, invTotal) => new KeyValuePair<string, decimal>(groupKey, invTotal.Sum())
+                                   );
+            foreach (var item in query)
+            {
+                Console.WriteLine(item.Key + ": " + item.Value);
+            }
+
+            return query;
+        }
+
+
         public List<Customer> Retrieve()
         {
             InvoiceRepository invoiceRepository = new InvoiceRepository();
