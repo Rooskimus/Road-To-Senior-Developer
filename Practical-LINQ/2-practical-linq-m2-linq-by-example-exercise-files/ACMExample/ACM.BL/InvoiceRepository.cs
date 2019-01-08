@@ -7,6 +7,39 @@ namespace ACM.BL
 {
     public class InvoiceRepository
     {
+        public decimal CalculateMean(List<Invoice> invoiceList)
+        {
+            return invoiceList.Average(inv => inv.DiscountPercent);
+        }
+
+        public decimal CalculateMedian(List<Invoice> invoiceList)
+        {
+            var sortedList = invoiceList.OrderBy(inv => inv.DiscountPercent);
+            int count = invoiceList.Count();
+            int position = count / 2;
+
+            decimal median;
+            if ((count % 2) == 0)
+            {
+                median = (sortedList.ElementAt(position).DiscountPercent +
+                    sortedList.ElementAt(position - 1).DiscountPercent) / 2;
+            }
+            else
+            {
+                median = sortedList.ElementAt(position).DiscountPercent;
+            }
+            return median;
+        }
+
+        public decimal CalculateMode(List<Invoice> invoiceList)
+        {
+            var mode = invoiceList.GroupBy(inv => inv.DiscountPercent)
+                        .OrderByDescending(group => group.Count())
+                        .Select(group => group.Key)
+                        .FirstOrDefault();
+            return mode;
+        }
+
         public List<Invoice> Retrieve()
         {
             List<Invoice> invoiceList = new List<Invoice>
