@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Acme.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ACM.BL
 {
-    public class Customer
+    public class Customer : EntityBase, ILoggable
     {
         public Customer()
             :this(0)  //Constructor chaining -- this calls the parameterized constructor below.
@@ -66,7 +67,7 @@ namespace ACM.BL
         }
 
        
-        public bool Validate()
+        public override bool Validate()
         {
             var isValid = true;
 
@@ -79,6 +80,12 @@ namespace ACM.BL
         public override string ToString()
         {
             return FullName;
+        }
+
+        public string Log()
+        {
+            var logString = $"{this.CustomerId}: {FullName} Email: {this.EmailAddress} Status: {this.EntityState.ToString()}";
+            return logString;
         }
     }
 }
