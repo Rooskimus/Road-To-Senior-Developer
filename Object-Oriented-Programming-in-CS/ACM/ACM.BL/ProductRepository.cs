@@ -16,7 +16,7 @@ namespace ACM.BL
             // Create the instance of the Product class
             // Pass in the requested Id
             Product product = new Product(productId);
-
+            
             // Code that retrieves the defined product
 
             // Temporary hard coded values to return 
@@ -34,10 +34,22 @@ namespace ACM.BL
         /// Saves the current product.
         /// </summary>
         /// <returns></returns>
-        public bool Save()
+        public bool Save(Product product)
         {
-            // Code that saves the defined product
-            return true;
+            var success = true;
+
+            if (product.HasChanges && product.IsValid)
+            {
+                if (product.IsNew)
+                {
+                    // Call an Insert Stored Procedure
+                }
+                else
+                {
+                    // Call and Update Stored Procedure
+                }
+            }
+            return success;
         }
 
     }
