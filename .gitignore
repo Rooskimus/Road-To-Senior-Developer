@@ -260,3 +260,4 @@ paket-files/
 __pycache__/
 *.pyc
 /Practical-LINQ/Slides
+/MVC-5-With-Auth/MvcAuth/MvcAuth/AppSettingsSecrets.config
