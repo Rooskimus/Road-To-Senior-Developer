@@ -82,57 +82,49 @@ namespace DataStructuresPart1
 
             public bool Remove(T item)
             {
-                LinkedListNode<T> previous = null;
-                LinkedListNode<T> current = _head;
+                //Set ourselves up to analyze from the head:
+                LinkedListNode<T> previous = null; // Heads have nothing before them!
+                LinkedListNode<T> current = _head; // Head is our starting point.
 
-                // 1: Empty list: Do nothing.
-                // 2: Single node: Previous is null
-                // 3: Many nodes:
-                //  a: Node to remove is the first node.
-                //  b: Node to remove is the middle or last.
-
+                // In the case our list is empty the head would be null, we return false immediately - thus no changes on an empty list.
                 while (current != null)
                 {
-                    if (current.Value.Equals(item))
+                    // Next we see if the search value is the same as the value we're looking at.
+                    // If not we grab the next value in our linked list.  If we hit the end (null)
+                    // without finding it, our while loop kicks us out, nothing changes, and a false is returned.
+
+                    if (current.Value.Equals(item))  // We found a matching value!
                     {
-                        // It's a node in the middle or end.
-                        if (previous != null)
+                        if (previous != null)  // Previous is only null for heads, so we found a middle or last.
                         {
-                            // Case 3b
-                            // Before: Head -> 3 -> 5 -> null
-                            // After: Head -> 3 -------> null
-                            previous.Next = current.Next;
+                            previous.Next = current.Next;  // Set the previous node to link to the next node.
 
-                            if (current.Next == null)
+                            if (current.Next == null) // if the next node is null, that means we're deleting the tail.
                             {
-                                _tail = previous;
+                                _tail = previous; // Assign new tail.
                             }
                         }
 
-                        else
+                        else  // Previous was a null, so we found a match on the head.
                         {
-                            // Case 2 or 3a.
-                            // Before: Head -> 3 -> 5
-                            // After:  Head ------> 5
-                            // Head -> 3 -> null
-                            // Head ------> null
+                            _head = _head.Next; // Assign new head
 
-                            _head = _head.Next;
-
-                            // Is the list now empty?
-                            if (_head == null)
+                            if (_head == null)  // Is our new head null?  That if so that means we've removed
+                                                // the only item in a single-item list.
                             {
-                                _tail = null;
+                                _tail = null;  // Set tail to be null as we now have an empty list.
                             }
                         }
-
+                        
+                        // In all cases where a match was found, we need to reduce the Count and return a true.
                         Count--;
                         return true;
                     }
+                    // As stated above, these move us to our next node when a matching value is not found
                     previous = current;
                     current = current.Next;
                 }
-                return false;
+                return false; //Report no changes were made and no matches were found.
             }
 
             IEnumerator IEnumerable.GetEnumerator()
