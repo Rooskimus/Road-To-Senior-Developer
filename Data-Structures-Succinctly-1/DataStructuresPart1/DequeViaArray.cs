@@ -12,6 +12,7 @@ namespace DataStructuresPart1
         int _size = 0; // Number of items in queue.
         int _head = 0; // Index of the oldest (first) item in queue.
         int _tail = -1; // Index of the newest (last) item in queue.
+        public int Count { get { return _size; } }
 
         private void allocateNewArray(int startingIndex) // O(n)
         {
@@ -99,6 +100,62 @@ namespace DataStructuresPart1
             }
             _items[_tail] = item;
             _size++;
+        }
+
+        public T DequeueFirst() // 0(1)
+        {
+            if (_size == 0)
+            {
+                throw new InvalidOperationException("THe deque is empty");
+            }
+            T value = _items[_head];
+            if(_head == _items.Length - 1) // If head is last index, wrap it around
+            {
+                _head = 0;
+            }
+            else // Move to the next slot
+            {
+                _head++;
+            }
+            _size--;
+            return value;
+        }
+
+        public T DequeueLast() // 0(1)
+        {
+            if (_size == 0)
+            {
+                throw new InvalidOperationException("THe deque is empty");
+            }
+            T value = _items[_tail];
+            if (_tail == 0) // If tail is first index, wrap it around
+            {
+                _tail = _items.Length - 1;
+            }
+            else // Move to the previous slot
+            {
+                _tail--;
+            }
+            _size--;
+            return value;
+        }
+
+        public T PeekFirst() // O(1)
+        {
+            if (_size == 0)
+            {
+                throw new InvalidOperationException("The deque is empty");
+            }
+            return _items[_head];
+        }
+
+        public T PeekLast() // O(1)
+        {
+            if (_size == 0)
+            {
+                throw new InvalidOperationException("The deque is empty");
+            }
+            return _items[_tail];
         }
     }
 }
