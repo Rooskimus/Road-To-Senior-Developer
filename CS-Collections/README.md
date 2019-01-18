@@ -1,6 +1,3 @@
-# CSharpBP-Collections
-Materials and starter files for the "C# Best Practices: Collections and Generics" Pluralsight course.
+# Collections in C#
 
-**NOTE: The `AcmeApp` sample code uses C# 6 and requires Visual Studio 2015.**
-
-If you are using VS 2013, use the `AcmeApp-For VS2013` version of the sample code.
+These are the results of coding along with the tutorial on PluralSight covering Collections and Generics.  It was very valuable in advancing my knowledge of generics in particular.
