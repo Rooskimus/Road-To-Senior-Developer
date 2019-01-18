@@ -95,6 +95,7 @@ namespace DataStructuresPart1
         }
         #endregion
 
+        #region MergeSort
         public void MergeSort(T[] items) // O(n log n); requires more memory O(n) instead of O(1) up until now.  Not ideal for data that is nearly sorted.
         {
             if (items.Length <= 1)
@@ -107,15 +108,85 @@ namespace DataStructuresPart1
             T[] right = new T[rightSize];
             Array.Copy(items, 0, left, 0, leftSize);
             Array.Copy(items, leftSize, right, 0, rightSize);
-            Sort(left);
-            Sort(right);
+            MergeSort(left);
+            MergeSort(right);
             Merge(items, left, right);
         }
 
         private void Merge(T[] items, T[] left, T[] right)
         {
-            //Left off here
+            int leftIndex = 0;
+            int rightIndex = 0;
+            int targetIndex = 0;
+            int remaining = left.Length + right.Length;
+            while (remaining > 0)
+            {
+                // The first two statements handle end behavior of the merge; if left or right has been
+                // entirely added to items, the other will be added without need for comparisons.  Because
+                // each previous merge has sorted the incoming arrays, the order should be correct.
+                if(leftIndex >= left.Length)
+                {
+                    items[targetIndex] = right[rightIndex++];
+                }
+                else if (rightIndex >= right.Length)
+                {
+                    items[targetIndex] = left[leftIndex++];
+                }
+                // The smaller value of the comparision will be added to items[] first.
+                else if (left[leftIndex].CompareTo(right[rightIndex]) < 0) // If left[leftIndex] is smaller...
+                {
+                    items[targetIndex] = left[leftIndex++];  // Append left[leftIndex], increment leftIndex.
+                }
+                else // If right[rightIndex] is smaller
+                {
+                    items[targetIndex] = right[rightIndex++]; // Append right[rightIndex], increment rightIndex.
+                }
+                targetIndex++;
+                remaining--;
+            }
         }
+        #endregion
+
+        #region QuickSort
+        // Chooses a pivot value and moves higher values to its right and lower to the left.
+        // Repeat on unsorted values until only 1 unsorted value remains; it is sorted by default at that point.
+        Random _pivotRng = new Random();
+        public void QuickSort(T[] items) //O(n log N) / worst case O(n^2); memory always 0(1).
+        {
+          quicksort(items, 0, items.Length-1);
+        }
+
+        private void quicksort(T[] items, int left, int right)
+        {
+            if (left < right) // Endpoint for recursion is when left = right, i.e. there's no unsorted left.
+            {
+                int pivotIndex = _pivotRng.Next(left, right); // get Random index between left and right indexes.
+                int newPivot = partition(items, left, right, pivotIndex); // Sorts into lower/high around pivotIndex and returns index where pivotValue ended up during sort.
+                quicksort(items, left, newPivot - 1); // sort the left side from pivot.
+                quicksort(items, newPivot + 1, right); // sort the right side from pivot.
+            }
+        }
+
+        // Swaps items in given array until items smaller than those at pivotIndex are on the left
+        // and those larger are on the right and then returns the index where the value of pivotIndex
+        // ended up.
+        private int partition(T[] items, int left, int right, int pivotIndex)
+        {
+            T pivotValue = items[pivotIndex];
+            Swap(items, pivotIndex, right);
+            int storeIndex = left;
+            for (int i = left; i < right; i++)
+            {
+                if(items[i].CompareTo(pivotValue) < 0) // If items[i] is smaller than pivotValue
+                {
+                    Swap(items, i, storeIndex);
+                    storeIndex += 1;
+                }
+            }
+            Swap(items, storeIndex, right);
+            return storeIndex;
+        }
+        #endregion
 
         void Swap(T[] items, int left, int right) // a shared method for swapping values in an array by index
         {
