@@ -462,7 +462,7 @@ namespace DataStructures2
             return false;
         }
 
-        public int Capacity { get { return _array.Length} };
+        public int Capacity { get { return _array.Length; } }
 
         public void Clear() // O(n) where n is the number of nodes in the table that contain data.
         {

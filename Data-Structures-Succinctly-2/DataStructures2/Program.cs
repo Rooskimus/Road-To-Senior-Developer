@@ -10,7 +10,8 @@ namespace DataStructures2
     {
         static void Main()
         {
-           
+            Data.PriorityQueueSample();
+            Console.ReadLine();
         }
     }
 }
