@@ -8,6 +8,9 @@ namespace DataStructures2
 {
     class Program
     {
-        
+        static void Main()
+        {
+           
+        }
     }
 }
