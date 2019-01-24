@@ -86,13 +86,186 @@ namespace DataStructures2
             return current; // If value is not found in the tree, this will be null.
         }
 
-        public bool Remove(T value);
+        /// <summary>
+        /// Removes the first occurrence of the specified value from the tree.
+        /// </summary>
+        /// <param name="value">The value to remove.</param>
+        /// <returns>True if the value was removed; false otherwise.</returns>
+        public bool Remove(T value) // O(log n)
+        {
+            AVLTreeNode<T> current;
+            current = Find(value);
+            if (current == null)
+            {
+                return false;
+            }
 
-        public IEnumerator<T> GetEnumerator();
+            AVLTreeNode<T> treeToBalance = current.Parent;
+            Count--;
+            
+            //Case 1: If current has no right child, then current's left replaces current.
+            if (current.Right == null)
+            {
+                if (current.Parent == null)
+                {
+                    Head = current.Left;
+                    if (Head != null)
+                    {
+                        Head.Parent = null;
+                    }
+                }
+                else
+                {
+                    int result = current.Parent.CompareTo(current.Value);
+                    if(result > 0)
+                    {
+                        // If the parent value is greater than the current value,
+                        // make the current left child a left child of parent.
+                        current.Parent.Left = current.Left;
+                    }
+                    else if (result < 0)
+                    {
+                        // If the parent value is less than the current value,
+                        // make the current left child a right child of the parent.
+                        current.Parent.Right = current.Left;
+                    }
+                }
+            }
+            // Case 2: If current's right child has no left child, then current's right child replaces current.
+            else if (current.Right.Left == null)
+            {
+                current.Right.Left = current.Left;
+                if (current.Parent == null)
+                {
+                    Head = current.Right;
+                    if (Head != null)
+                    {
+                        Head.Parent = null;
+                    }
+                }
+                else
+                {
+                    int result = current.Parent.CompareTo(current.Value);
+                    if (result > 0)
+                    {
+                        // If the parent value is greater than the current value,
+                        // make the current the right child a left child of parent.
+                        current.Parent.Left = current.Right;
+                    }
+                }
+            }
+            // Case 3: If current's right child has a left child, replace current with
+            // current's right child's leftmost child.
+            else
+            {
+                // Find the right's leftmost child.
+                AVLTreeNode<T> leftmost = current.Right.Left;
+                while (leftmost.Left != null)
+                {
+                    leftmost = leftmost.Left;
+                }
+                // The parent's left subtree becomes the leftmost's right subtree.
+                leftmost.Parent.Left = leftmost.Right;
+                //Asign leftmost's left and right to current's left and right children.
+                leftmost.Left = current.Left;
+                leftmost.Right = current.Right;
+                if (current.Parent == null)
+                {
+                    Head = leftmost;
+                    if (Head != null)
+                    {
+                        Head.Parent = null;
+                    }
+                }
+                else
+                {
+                    int result = current.Parent.CompareTo(current.Value);
+                    if (result > 0)
+                    {
+                        // If the parent value is greater than the current value,
+                        // make leftmost the parent's left child.
+                        current.Parent.Left = leftmost;
+                    }
+                    else if (result < 0)
+                    {
+                        // If the parent value is less than the current value,
+                        // make the leftmost parent's right child.
+                        current.Parent.Right = leftmost;
+                    }
+                }
+            }
+            if (treeToBalance != null)
+            {
+                treeToBalance.Balance();
+            }
+            else
+            {
+                if (Head != null)
+                {
+                    Head.Balance();
+                }
+            }
+            return true;
+        }
+
+        public IEnumerator<T> InOrderTraversal() // O(1) or O(n) as other such functions.
+        {
+            // This is a non-recursive algorithm using a stack to demonstrate removing
+            // recursion to make using the yield syntax easier.
+            if (Head != null)
+            {
+                // Store the nodes we've skipped in this stack (avoids recursion).
+                Stack<AVLTreeNode<T>> stack = new Stack<AVLTreeNode<T>>();
+                AVLTreeNode<T> current = Head; // Start from the head.
+                // When removing recursion, we need to keep track of whether
+                // we should be going to the left nodes or the right nodes next.
+                bool goLeftNext = true;
+                // Start by pushing Head onto the stack.
+                stack.Push(current);
+                while (stack.Count > 0)
+                {
+                    if (goLeftNext) // If we're heading left.
+                    {
+                        // Push everything but the leftmost node to the stack.
+                        // We'll yeild the leftmost after this block.
+                        while (current.Left != null)
+                        {
+                            stack.Push(current);
+                            current = current.Left;
+                        }
+                    }
+                    // Inorder is left -> yield -> right
+                    yield return current.Value;
+                    // If we can go right, then do so.
+                    if (current.Right != null)
+                    {
+                        current = current.Right;
+                        // Once we've gone right once, we need to start going left again.
+                        goLeftNext = true;
+                    }
+                    else
+                    {
+                        // If we cant' go right we need to pop off the parent node
+                        // so we can process it and then go to its right node.
+                        current = stack.Pop();
+                        goLeftNext = false;
+                    }
+                }
+            }
+        }
+
+        public IEnumerator<T> GetEnumerator() // O(1) or O(n) as other such functions
+        {
+            return InOrderTraversal();
+        }
 
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator();
 
-        public void Clear();
+        public void Clear() // O(1)
+        {
+            Head = null;
+            Count = 0;
+        }
 
         public int Count { get; private set; }
     }
