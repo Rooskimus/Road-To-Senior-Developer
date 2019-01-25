@@ -422,21 +422,107 @@ namespace DataStructures2
             return node.Values.Last();
         }
 
-        #endregion  
+        #endregion
 
-        public bool Contains(T value);
+        #region Contains
+        public bool Contains(T value) // O(log n)
+        {
+            BTreeNode<T> node;
+            int valueIndex;
+            return TryFindNodeContainingValue(value, out node, out valueIndex);
+        }
 
-        public void Clear();
+        internal bool TryFindNodeContainingValue(T value, out BTreeNode<T> node, out int valueIndex)
+        {
+            BTreeNode<T> current = root;
+            // If the current node is null, then we never found the value.
+            // Otherwise, we still have hope.
+            while (current != null)
+            {
+                int index = 0;
+                // Check each value in the node.
+                while (index < current.Values.Count)
+                {
+                    int compare = value.CompareTo(current.Values[index]);
+                    if (compare == 0) // We found it
+                    {
+                        node = current;
+                        valueIndex = index;
+                        return true;
+                    }
+                    // If the value is less than the current node's value,
+                    // then we want to go left (which is where we are).
+                    if (compare < 0)
+                    {
+                        break;
+                    }
+                    // Otherwise move on to the next value in the node.
+                    index++;
+                }
+                if (current.Leaf)
+                {
+                    break; // If at leaf, no where else to go.
+                }
+                else
+                {
+                    //Otherwise, go into the child which must contain the value.
+                    current = current.Children[index];
+                }
+            }
+            node = null;
+            valueIndex = -1;
+            return false;
+        }
+        #endregion
 
-        public void CopyTo(T[] array, int arrayIndex);
+        public void Clear() // O(1)
+        {
+            root = null;
+            Count = 0;
+        }
+
+        public void CopyTo(T[] array, int arrayIndex) // O(n)
+        {
+            foreach (T value in InOrderEnumerator(root))
+            {
+                array[arrayIndex++] = value;
+            }
+        }
 
         public int Count { get; private set; }
 
-        public bool IsReadOnly { get; }
+        public bool IsReadOnly { get { return false; } }
 
-        public IEnumerator<T> GetEnumerator();
+        #region Enumerators
+        public IEnumerator<T> GetEnumerator()  // O(1) / O(n) same as other trees.
+        {
+            return InOrderEnumerator(root).GetEnumerator();
+        }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator();
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        private IEnumerable<T> InOrderEnumerator(BTreeNode<T> node)
+        {
+            if (node != null)
+            {
+                if (node.Leaf) { foreach (T value in node.Values) { yield return value; } }
+
+                else
+                {
+                    IEnumerator<BTreeNode<T>> children = node.Children.GetEnumerator();
+                    IEnumerator<T> values = node.Values.GetEnumerator();
+                    while (children.MoveNext())
+                    {
+                        foreach (T childValue in InOrderEnumerator(children.Current)) { yield return childValue; }
+                        if (values.MoveNext()) { yield return values.Current; }
+                    }
+                }
+            }
+        }
+        #endregion
     }
 
     #region BTreeNode
