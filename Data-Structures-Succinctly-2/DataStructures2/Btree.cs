@@ -95,9 +95,147 @@ namespace DataStructures2
                 return node.DeleteKeyFromLeafNode(value);
             }
             int valueIndex;
-            if(TryGetIndexOf(node, value, out valueIndex))
+            if (TryGetIndexOf(node, value, out valueIndex))
             {
-               // LEFT OFF HERE!
+                // Deletion case 2...
+                // We have found the non-leaf node the value is in. Since we can only delete values
+                // from a leaf node, we need to push the value to delete down into a child.
+                // If the child that precedes the value to delete (the "left" child) has
+                // at least the minimum degree of children...
+                if (node.Children[valueIndex].Values.Count >= node.Children[valueIndex].MinimumDegree)
+                {
+                    //     [3       6         10]
+                    // [1 2]  [4 5]   [7 8 9]    [11 12]
+                    // Deleting 10.
+                    // Find the largest value in the child node that contains smaller values
+                    // than what is being deleted (this is the value 9)...
+
+                    T valuePrime = FindPredecessor(node, valueIndex);
+
+                    // and REPLACE the value to delete with the next largest value (the one
+                    // we just found--swapping 9 and 10).
+
+                    node.ReplaceValue(valueIndex, valuePrime);
+
+                    // After the swap...
+                    //     [3       6         9]
+                    // [1 2]  [4 5]   [7 8 9]    [11 12]
+                    // notice that 9 is in the tree twice. This is not a typo. We are about
+                    // to delete it from the child we took it from.
+                    // Delete the value we moved up (9) from the child (this may in turn
+                    // push it down to subsequent children until it is in a leaf).
+
+                    return RemoveValue(node.Children[valueIndex], valuePrime);
+
+                    // Final tree:
+                    //     [3       6        9]
+                    // [1 2]  [4 5]   [7 8 ]   [11 12]
+                }
+                else
+                {
+                    // If the left child did not have enough values to move one of its values up,
+                    // check whether the right child does.
+                    if (node.Children[valueIndex + 1].Values.Count >= node.Children[valueIndex + 1].MinimumDegree)
+
+                    {
+                        // See the previous algorithm and do the opposite...
+                        //     [3       6         10]
+                        // [1 2]  [4 5]   [7 8 9]    [11 12]
+                        // Deleting 6.
+                        // Successor = 7.
+                        T valuePrime = FindSuccessor(node, valueIndex);
+                        node.ReplaceValue(valueIndex, valuePrime);
+
+                        // After replacing 6 with 7, the tree is:
+                        //     [3       7         10]
+                        // [1 2]  [4 5]   [7 8 9]    [11 12]
+                        // Now remove 7 from the child.
+                        return RemoveValue(node.Children[valueIndex + 1], valuePrime);
+
+                        // Final tree:
+                        //     [3       7         10]
+                        // [1 2]  [4 5]   [8 9]    [11 12]
+                    }
+                    else
+                    {
+                        // If neither child has the minimum degree of children, it means they
+                        // both have (minimum degree - 1) children. Since a node can have
+                        // (2 * <minimum degree> - 1) children, we can safely merge the two nodes
+                        // into a single child.
+                        //
+                        //     [3     6     9]
+                        // [1 2] [4 5] [7 8] [10 11]
+                        //
+                        // Deleting 6.
+                        //
+                        // [4 5] and [7 8] are merged into a single node with [6] pushed down
+                        //into it.
+                        //
+                        //     [3          9]
+                        // [1 2] [4 5 6 7 8] [10 11]
+
+                        BTreeNode<T> newChildNode = node.PushDown(valueIndex);
+
+                        // Now that we've pushed the value down a level, we can call remove
+                        // on the new child node [4 5 6 7 8].
+                        return RemoveValue(newChildNode, value);
+                    }
+                }
+            }
+            else
+            {
+                // Deletion case 3...
+                // We are at an internal node which does not contain the value we want to delete.
+                // First, find the child path that the value we want to delete would be in.
+                // If it exists in the tree...
+                int childIndex;
+                FindPotentialPath(node, value, out valueIndex, out childIndex);
+
+                // Now that we know where the value should be, we need to ensure that the node
+                // we are going to has the minimum number of values necessary to delete from.
+                if (node.Children[childIndex].Values.Count == node.Children[childIndex].MinimumDegree - 1)
+                {
+                    // Since the node does not have enough values, what we want to do is borrow
+                    // a value from a sibling that has enough values to share.
+                    // Determine if the left or right sibling has the most children.
+                    int indexOfMaxSibling = GetIndexOfMaxSibling(childIndex, node);
+
+                    // If a sibling with values exists (maybe we're
+                    // at the root node and don't have one)
+                    // and that sibling has enough values...
+                    if (indexOfMaxSibling >= 0 && node.Children[indexOfMaxSibling].Values.Count >=
+                        node.Children[indexOfMaxSibling].MinimumDegree)
+                    {
+                        // Rotate the appropriate value from the sibling
+                        // through the parent and into the current node
+                        // so that we have enough values in the current
+                        // node to push a value down into the
+                        // child we are going to check next.
+                        //     [3      7]
+                        // [1 2] [4 5 6]  [8 9]
+                        //
+                        // The node we want to travel through is [1 2], but we
+                        // need another node in it. So we rotate the 4
+                        // up to the root and push the 3 down into the [1 2]
+                        // node.
+                        //
+                        //       [4     7]
+                        // [1 2 3] [5 6]  [7 8]
+                        RotateAndPushDown(node, childIndex, indexOfMaxSibling);
+                    }
+                    else
+                    {
+                        // Merge (which may push the only node in the root down -- so new root).
+                        BTreeNode<T> pushedDownNode = node.PushDown(valueIndex);
+                        // Now find the node we just pushed down.
+                        childIndex = 0;
+                        while (pushedDownNode != node.Children[childIndex])
+                        {
+                            childIndex++;
+                        }
+                    }
+                }
+                return RemoveValue(node.Children[childIndex], value);
             }
         }
 
