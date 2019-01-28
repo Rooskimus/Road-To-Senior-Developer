@@ -1,0 +1,3 @@
+# Senior Development Essays
+
+Here I'm placing the essays I wrote on topics studied with the intent of gaining a Senior Developer level of understanding of programming.  These were not graded or reviewed, but were very useful in summarizing and solidifying my own understanding of these topics at this point.  As such, the contents may not be 100% accurate, but reflect my basic understanding at the time they were written.  I'm mostly keeping them here for posterity's sake and if I need a quick refresher on a topic in my own words, but perhaps others who are studying these topics may find them useful.

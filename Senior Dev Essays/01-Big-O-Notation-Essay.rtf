@@ -1,0 +1,52 @@
+{\rtf1\ansi\deff0\adeflang1025
+{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\fswiss\fprq2\fcharset128 Arial;}{\f4\fswiss\fprq0\fcharset128 Arial;}{\f5\froman\fprq0\fcharset128 ;}{\f6\fnil\fprq2\fcharset0 Microsoft YaHei;}}
+{\colortbl;\red0\green0\blue0;\red128\green128\blue128;}
+{\stylesheet{\s0\snext0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\nowidctlpar\cf0\hich\af2\langfe2052\dbch\af5\afs24\lang1081\loch\f0\fs24\lang1033 Default;}
+{\s15\sbasedon0\snext16{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sb240\sa120\keepn\cf0\hich\af2\langfe2052\dbch\af6\loch\f2\fs28\lang1033 Heading;}
+{\s16\sbasedon0\snext16{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sb0\sa120\cf0\hich\af0\langfe2052\dbch\af0\loch\f0\fs24\lang1033 Text body;}
+{\s17\sbasedon16\snext17{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sb0\sa120\cf0\hich\af4\langfe2052\dbch\af0\loch\f0\fs24\lang1033 List;}
+{\s18\sbasedon0\snext18{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\sb120\sa120\cf0\i\hich\af4\langfe2052\dbch\af0\ai\loch\f0\fs24\lang1033 Caption;}
+{\s19\sbasedon0\snext19{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af4\langfe2052\dbch\af0\loch\f0\fs24\lang1033 Index;}
+}{\info{\creatim\yr0\mo0\dy0\hr0\min0}{\revtim\yr0\mo0\dy0\hr0\min0}{\printim\yr0\mo0\dy0\hr0\min0}{\comment OpenOffice}{\vern4130}}\deftab709\deftab709\deftab709\deftab709\deftab709\deftab709\deftab709\deftab709\deftab709\deftab709\deftab709\deftab709\deftab709\deftab709\deftab709\deftab709\deftab709\deftab709\deftab709\deftab709
+
+{\*\pgdsctbl
+{\pgdsc0\pgdscuse195\pgwsxn12240\pghsxn15840\marglsxn1134\margrsxn1134\margtsxn1134\margbsxn1134\pgdscnxt0 Default;}}
+\formshade{\*\pgdscno0}\paperh15840\paperw12240\margl1134\margr1134\margt1134\margb1134\sectd\sbknone\sectunlocked1\pgndec\pgwsxn12240\pghsxn15840\marglsxn1134\margrsxn1134\margtsxn1134\margbsxn1134\ftnbj\ftnstart1\ftnrstcont\ftnnar\aenddoc\aftnrstcont\aftnstart1\aftnnrlc
+\pgndec\pard\plain \s0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\nowidctlpar\cf0\hich\af2\langfe2052\dbch\af5\afs24\lang1081\loch\f0\fs24\lang1033{{\*\bkmkstart docs-internal-guid-8969a8da-7fff-c6e8-94d1-44934d1e178e}{\*\bkmkend docs-internal-guid-8969a8da-7fff-c6e8-94d1-44934d1e178e}\scaps0\caps0\cf1\strike0\i0\ulnone\ulc0\b0\afs24\ai0\ab0\rtlch \ltrch\loch\loch\f3
+What is Big-O notation? How could you explain it to a person who isn\'81\'66t a technology worker? How can you apply it on the job as a programmer?}{\afs24\rtlch \ltrch\loch\loch\f3
+ }
+\par \pard\plain \s0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\nowidctlpar\cf0\hich\af2\langfe2052\dbch\af5\afs24\lang1081\loch\f0\fs24\lang1033{\rtlch \ltrch\loch
+}
+\par \pard\plain \s0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\nowidctlpar\cf0\hich\af2\langfe2052\dbch\af5\afs24\lang1081\loch\f0\fs24\lang1033{\rtlch \ltrch\loch\loch\f3
+I'm going to approach all three questions in a simplified explanation:}
+\par \pard\plain \s0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\nowidctlpar\cf0\hich\af2\langfe2052\dbch\af5\afs24\lang1081\loch\f0\fs24\lang1033{\rtlch \ltrch\loch
+}
+\par \pard\plain \s0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\nowidctlpar\cf0\hich\af2\langfe2052\dbch\af5\afs24\lang1081\loch\f0\fs24\lang1033{\rtlch \ltrch\loch\loch\f3
+\tab Big-O Notation is a measure of the efficiency of an algorithm that looks at broad strokes rather than minor optimization.  To understand what that means, first what is an algorithm?  In programming, an algorithm is simply a piece of code that when given an input, like a number, will }{\i\ai\rtlch \ltrch\loch\loch\f3
+do}{\rtlch \ltrch\loch\loch\f3
+ something to or with that number, and then }{\i\ai\rtlch \ltrch\loch\loch\f3
+return}{\rtlch \ltrch\loch\loch\f3
+ the result.  Your microwave is like an algorithm!  You input cold food, the microwave }{\i\ai\rtlch \ltrch\loch\loch\f3
+does}{\rtlch \ltrch\loch\loch\f3
+ something to it, and you are returned hot food.  Algorithms are like that, but for data.  You put in some data, the algorithm }{\i\ai\rtlch \ltrch\loch\loch\f3
+does}{\rtlch \ltrch\loch\loch\f3
+ something to or with it, then }{\i\ai\rtlch \ltrch\loch\loch\f3
+returns}{\rtlch \ltrch\loch\loch\f3
+ what you wanted.}
+\par \pard\plain \s0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\nowidctlpar\cf0\hich\af2\langfe2052\dbch\af5\afs24\lang1081\loch\f0\fs24\lang1033{\rtlch \ltrch\loch\loch\f3
+\tab OK, great.  So an algorithm does something to data.  As programmers we want to make sure that the algorithm does that thing within a reasonable amount of time.  Big-O notation is a useful estimation of how long it will take to do that thing.  We usually look at Big-O notation in terms of very large amounts of data, like a bank tracking all of its transactions. So shorter terms and smaller amounts aren't usually considered. Big-O looks like this: O(1), O(n), O(n}{{\*\updnprop10000}\up10\rtlch \ltrch\loch\loch\f3
+2}{\rtlch \ltrch\loch\loch\f3
+), and so forth.}
+\par \pard\plain \s0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\nowidctlpar\cf0\hich\af2\langfe2052\dbch\af5\afs24\lang1081\loch\f0\fs24\lang1033{\rtlch \ltrch\loch\loch\f3
+\tab So let's go back to our microwave algorithm.  A microwave is one of many algorithms for heating up your food.  Another would be an oven.  Let's consider heating up individual sized freezer pizzas.  In an oven, you have to preheat the oven and bake the pizza for a total cook time of 20 minutes.  In a microwave, you just enter in 3 minutes and you're done.  But that's just for one pizza.  What if you have a party one night with 20 guests and the menu is mini freezer pizzas for all?  The microwave can only fit two pizzas at a time, and let's say it takes double the time, 6 minutes, to heat up the pizzas.  That means everyone's pizzas will be ready over the span of 60 minutes!  You'll be in front of the microwave for }{\i\ai\rtlch \ltrch\loch\loch\f3
+an hour}{\rtlch \ltrch\loch\loch\f3
+ getting all of those pizzas nuked.  This kind of progress over time is linear, that means it increases by 3 minutes for every pizza.  The more pizzas, the more time it takes.  The Big-O is O(n).}
+\par \pard\plain \s0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\nowidctlpar\cf0\hich\af2\langfe2052\dbch\af5\afs24\lang1081\loch\f0\fs24\lang1033{\rtlch \ltrch\loch\loch\f3
+\tab But what about the oven?  Let's say the oven can hold 10 pizzas per rack and has 3 racks and adding more pizzas doesn't slow down the overall cook time.  For our very large case, you can cook }{\i\ai\rtlch \ltrch\loch\loch\f3
+all }{\rtlch \ltrch\loch\loch\f3
+of the pizzas in just 20 minutes \u8211\'3f the same it would have taken for just one!  This kind of situation is called \'81\'67constant time\'81\'68 and is written O(1).  It's independent of the amount of data \u8211\'3f or mini pizzas \u8211\'3f that are fed into it.}
+\par \pard\plain \s0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\nowidctlpar\cf0\hich\af2\langfe2052\dbch\af5\afs24\lang1081\loch\f0\fs24\lang1033{\rtlch \ltrch\loch\loch\f3
+\tab Now what we like to see in programming for large sets of data is a Big-O of O(log n).  Basically, this one means that the more data is fed in, the less time each result takes to come out.  In our pizza example, let's say there was a fancy new infinitely deep microwave.  If you use it to cook one pizza it takes 10 minutes.  Two pizzas is 19 minutes (so the second only added 9 minutes instead of 10).  Three pizzas takes 25 minutes (third only adds 6 minutes) and so forth.  If you had to cook 500 pizzas, that sounds a whole lot better than each one adding 3 minutes!}
+\par \pard\plain \s0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\nowidctlpar\cf0\hich\af2\langfe2052\dbch\af5\afs24\lang1081\loch\f0\fs24\lang1033{\rtlch \ltrch\loch\loch\f3
+\tab So now can you see how useful this will be for programmers?  Going back to that bank example, let's say they want to sort all of their customers' accounts by how much money they have in savings and perform some analysis.  Well, the computer has to find all of the customers in the database, build a list, then read and compare all of the numbers in the savings accounts and rearrange the list accordingly.  There are a number of ways to do this, and depending on the situation Big-O can tell us which method is likely to take minutes versus hours, or hours versus days.}
+\par }
