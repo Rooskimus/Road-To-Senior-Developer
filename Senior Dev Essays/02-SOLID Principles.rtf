@@ -1,0 +1,85 @@
+{\rtf1\ansi\deff0\adeflang1025
+{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\fnil\fprq0\fcharset0 Open Sans;}{\f4\fswiss\fprq2\fcharset128 Arial;}{\f5\fnil\fprq2\fcharset0 Microsoft YaHei;}{\f6\fnil\fprq2\fcharset0 Arial;}{\f7\fswiss\fprq0\fcharset128 Arial;}}
+{\colortbl;\red0\green0\blue0;\red128\green128\blue128;}
+{\stylesheet{\s0\snext0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033 Default;}
+{\s15\sbasedon0\snext16\sb240\sa120\keepn\hich\af5\dbch\af6\afs28\loch\f2\fs28 Heading;}
+{\s16\sbasedon0\snext16\sb0\sa120 Text body;}
+{\s17\sbasedon16\snext17\sb0\sa120\dbch\af7 List;}
+{\s18\sbasedon0\snext18\sb120\sa120\noline\i\dbch\af7\afs24\ai\fs24 Caption;}
+{\s19\sbasedon0\snext19\noline\dbch\af7 Index;}
+}{\info{\creatim\yr0\mo0\dy0\hr0\min0}{\revtim\yr0\mo0\dy0\hr0\min0}{\printim\yr0\mo0\dy0\hr0\min0}{\comment OpenOffice}{\vern4130}}\deftab709
+
+{\*\pgdsctbl
+{\pgdsc0\pgdscuse195\pgwsxn12240\pghsxn15840\marglsxn1134\margrsxn1134\margtsxn1134\margbsxn1134\pgdscnxt0 Default;}}
+\formshade\paperh15840\paperw12240\margl1134\margr1134\margt1134\margb1134\sectd\sbknone\sectunlocked1\pgndec\pgwsxn12240\pghsxn15840\marglsxn1134\margrsxn1134\margtsxn1134\margbsxn1134\ftnbj\ftnstart1\ftnrstcont\ftnnar\aenddoc\aftnrstcont\aftnstart1\aftnnrlc
+\pgndec\pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{{\*\bkmkstart docs-internal-guid-1d60e4a3-7fff-99d5-4a08-3511a5d3f301}{\*\bkmkend docs-internal-guid-1d60e4a3-7fff-99d5-4a08-3511a5d3f301}\scaps0\caps0\cf1\striked0\i0\ulnone\ulc0\b0\animtext0\afs22\rtlch \ltrch\loch\fs22\loch\f4
+How have you seen each of the SOLID principles successfully put into practice? How have you seen them violated? What problems arose from those violations?}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\afs22\rtlch \ltrch\loch\fs22\loch\f4
+}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\afs22\rtlch \ltrch\loch\fs22\loch\f4
+}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\afs22\rtlch \ltrch\loch\fs22\loch\f4
+\tab At this point in my programming career the SOLID principles are brand new to me, so I haven't had a lot of opportunities to view actual code under the SOLID lens.  As such, it's hard to answer about having seen them successfully put into practice, but I'll do my best and draw from examples that were covered in the book SOLID Principles Succinctly.}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\afs22\rtlch \ltrch\loch\fs22\loch\f4
+}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\ul\ulc0\afs22\rtlch \ltrch\loch\fs22\loch\f4
+S \u8211\'13 Single Responsibility Principle (SRP):}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\afs22\rtlch \ltrch\loch\fs22\loch\f4
+}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\ulnone\ulc0\afs22\rtlch \ltrch\loch\fs22\loch\f4
+\tab This one is easy, I can recall many examples of code I made when learning basic programming that would have violated this principle.  Take, for example, the Twenty One game from my GitHub page.  That was the first larger project I had ever created.  The course covered splitting the classes and namespaces into reusable pieces and many of them performed exactly the one task they needed to.  An easy example is the Card class, which simply contains the properties and a constructor needed to create a poker card.  It might be debatable whether it needs the enums for suit and faces within the class, but with the idea that this is a poker-card based application it was appropriate.}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\ulnone\ulc0\afs22\rtlch \ltrch\loch\fs22\loch\f4
+\tab The violation of this principle comes from the same application.  Repeatedly in the application the instructor wrote code to test whether or not input was valid, such as a yes, a Yes, a y, etc.  I really didn't like that and thought that those functions should lie elsewhere and created a static AnswerChecker class (although I get that the name should probably have been AnswerValidator in retrospect).  One method inside provide a way to check if the input was valid for a yes/no question and one does the same for integers, and both will prompt for a correct input.  It's basic, but I identified repeated code with responsibility that didn't belong in other classes and created a separate class for it.}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\ulnone\ulc0\afs22\rtlch \ltrch\loch\fs22\loch\f4
+\tab Before I did so there was a lot of work involved every time an input was required by the user to make sure that the program wouldn't break given the wrong kind of input.  The code was bloated and you would have to test each input location with numerous kinds of inputs to see if it could handle that input.  Fixing it you only have to test ONE method per input type (string, int, etc.).}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\ulnone\ulc0\afs22\rtlch \ltrch\loch\fs22\loch\f4
+}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\ul\ulc0\afs22\rtlch \ltrch\loch\fs22\loch\f4
+O \u8211\'13 Open-Closed Principle (OCP):}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\ulnone\ulc0\afs22\rtlch \ltrch\loch\fs22\loch\f4
+}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\ulnone\ulc0\afs22\rtlch \ltrch\loch\fs22\loch\f4
+\tab This one is not so easy.  The principle is that when a class is designed, it should be open for extension but closed for modification.  In practice, this means using more abstract classes and interfaces.  They give you a base Type which can be manipulated but implementation can be variable, which means new classes can inherit and extend the class while the base class remains unchanged.}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\ulnone\ulc0\afs22\rtlch \ltrch\loch\fs22\loch\f4
+\tab In the example in the book, there was a Validate Data class which checked for a valid Data type and a white-listed IP.  But if there were a new validator to be added, the class would have to be rewritten.  To solve this, an IValidator interface was created which in turn was used to create validator classes for the types we needed.  Now if another type were added, the base classes wouldn't need to be changed and the validators could all be added into the same list and called together.  Hence the base class was closed, but open for extension.}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\ulnone\ulc0\afs22\rtlch \ltrch\loch\fs22\loch\f4
+\tab Without this principle being implemented, the code becomes more complex and harder to maintain if any new features are added.  Tracking down and finding all the places where new validators would have to be added would be tricky and tedious.}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\ulnone\ulc0\afs22\rtlch \ltrch\loch\fs22\loch\f4
+}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\ul\ulc0\afs22\rtlch \ltrch\loch\fs22\loch\f4
+L \u8211\'13 Liskov Substitution Principle (LSP):}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\ul\ulc0\afs22\rtlch \ltrch\loch\fs22\loch\f4
+}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\ulnone\ulc0\afs22\rtlch \ltrch\loch\fs22\loch\f4
+\tab Again, it's hard to draw from my experience for this one, as it's a bit more nuanced.  Basically, by the LSP anywhere a parent class is called, a child class should be able to be used without causing an issue.  This kind of thing crops up when you're not separating the duties of your interfaces correctly.  The example given in the book demonstrated again with validators.  There was a validator interface that had Load and IsValid methods, but one of the children did not require the IsValid because it dynamically checked during run-time.  So when the list of validators was being enumerated and having the IsValid method called, an if/else statement to catch the dynamic validator and prevent it from being called had to be placed in the calling method.  Essentially, there was one child class that couldn't seamlessly be inserted into a place where the parent class was called.}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\ulnone\ulc0\afs22\rtlch \ltrch\loch\fs22\loch\f4
+\tab The solution presented was to create an seperate interface for Load and IsValid then use multiple inheritance to avoid giving the dynamic validator a method it didn't need. That way no if/else would be needed in the calling function and if any other outlier data types were added the functionality is automatically built in without modifying the caller.}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\ul\ulc0\afs22\rtlch \ltrch\loch\fs22\loch\f4
+}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\ul\ulc0\afs22\rtlch \ltrch\loch\fs22\loch\f4
+I \u8211\'13 Interface Separation Principle (ISP):}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\ul\ulc0\afs22\rtlch \ltrch\loch\fs22\loch\f4
+}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\ulnone\ulc0\afs22\rtlch \ltrch\loch\fs22\loch\f4
+\tab ISP basically means that you shouldn't make bloated interfaces with more methods than the children of the interface will need.  Instead, make smaller interfaces, use multiple inheritance and even interfaces that inherit interfaces.}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\ulnone\ulc0\afs22\rtlch \ltrch\loch\fs22\loch\f4
+\tab The example in the book was similar to the previous example, but inverted.  They gave a case where a validator needed IsValid but not Load.  They began with an interface that contained both.  Their solution was to make them into two interfaces and have Load inherit the IsValid interface.  This worked to solve this one problem, but to me it re-created the problem of the inverse case.  I believe that it would have been better to simply stick with the multiple inheritance on each class.  Or, if possible, make a third interface that inherits both IsValid and Load, which is probably unnecessary for this case but if there were a lot more interfaces being used may be valid.}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\ul\ulc0\afs22\rtlch \ltrch\loch\fs22\loch\f4
+}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\ul\ulc0\afs22\rtlch \ltrch\loch\fs22\loch\f4
+D \u8211\'13 Dependency Inversion Principle (DIP):}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\ul\ulc0\afs22\rtlch \ltrch\loch\fs22\loch\f4
+}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\ulnone\ulc0\afs22\rtlch \ltrch\loch\fs22\loch\f4
+\tab DIP means that high-level modules should not depend on low-level modules (especially for decision making).  Both should depend on abstractions.}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\ulnone\ulc0\afs22\rtlch \ltrch\loch\fs22\loch\f4
+\tab For the example, a DataValidator class was written with explicit if/else statements to determine which writer needed to be called for based on an enum property in the classes.  When called, the functionality was opaque in the calling method because you can't see how the lower level function is choosing the data type or what data types it }{\i\ulnone\ulc0\afs22\ai\rtlch \ltrch\loch\fs22\loch\f4
+can }{\i0\ulnone\ulc0\afs22\ai0\rtlch \ltrch\loch\fs22\loch\f4
+use.  If a new type were added then called, an exception would be thrown unless the lower-level DataValidator class were updated.  Note, this also violates SRP as the DataValidator class shouldn't be responsible for choosing which data type to output to the writer.  A lot of these principles are inter-related.}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\i0\ulnone\ulc0\afs22\ai0\rtlch \ltrch\loch\fs22\loch\f4
+\tab As a solution, they created an IValidatorWriter interface that all of the writers inherit from and had the DataValidator take the IValidatorWriter as its parameter.  That way when the high-level method calls DataValidator it must tell the DataValidator what data type to use.  It's no longer relying on the lower-level class to make a decision.  Plus, if any new ValidatorWriters were to be added they would work so long as they inherit the interface, satisfying the OCP. }
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\ul\ulc0\afs22\rtlch \ltrch\loch\fs22\loch\f4
+}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\hich\af8\langfe2052\dbch\af6\afs24\lang1081\loch\f0\fs24\lang1033{\i0\ulnone\ulc0\afs22\ai0\rtlch \ltrch\loch\fs22\loch\f4
+\tab So in summary, the SOLID principles allow us to make reusable and extensible code that prevent chains of errors and debugging from bubbling up from the base levels of a program.}
+\par }
