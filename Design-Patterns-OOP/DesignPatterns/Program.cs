@@ -10,39 +10,59 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
-            #region CompositeDemo
-            // Composite Demo:
-            Writing hello = new Writing();
-            hello.Add(new Symbol('h'));
-            hello.Add(new Symbol('e'));
-            hello.Add(new Symbol('l'));
-            hello.Add(new Symbol('l'));
-            hello.Add(new Symbol('o'));
-            // Add a line break
-            LineBreak br = new LineBreak();
-            hello.Add(br);
-            // Print hello.
-            hello.Print();
-            // Remove the line break so we can re-use hello.
-            hello.Remove(br);
-            // Create the writing 'bye'.
-            Writing bye = new Writing();
-            bye.Add(new Symbol('b'));
-            bye.Add(new Symbol('y'));
-            bye.Add(new Symbol('e'));
-            // Create a writing consisting of the writings.
-            // hello and bye separated by a space.
-            // This is where things get composite; a list of a list.
-            Writing helloBye = new Writing();
-            helloBye.Add(hello);
-            helloBye.Add(new Space());
-            helloBye.Add(bye);
-            // Print all the Printables
-            helloBye.Print();
+            //#region CompositeDemo
+            //// Composite Demo:
+            //Writing hello = new Writing();
+            //hello.Add(new Symbol('h'));
+            //hello.Add(new Symbol('e'));
+            //hello.Add(new Symbol('l'));
+            //hello.Add(new Symbol('l'));
+            //hello.Add(new Symbol('o'));
+            //// Add a line break
+            //LineBreak br = new LineBreak();
+            //hello.Add(br);
+            //// Print hello.
+            //hello.Print();
+            //// Remove the line break so we can re-use hello.
+            //hello.Remove(br);
+            //// Create the writing 'bye'.
+            //Writing bye = new Writing();
+            //bye.Add(new Symbol('b'));
+            //bye.Add(new Symbol('y'));
+            //bye.Add(new Symbol('e'));
+            //// Create a writing consisting of the writings.
+            //// hello and bye separated by a space.
+            //// This is where things get composite; a list of a list.
+            //Writing helloBye = new Writing();
+            //helloBye.Add(hello);
+            //helloBye.Add(new Space());
+            //helloBye.Add(bye);
+            //// Print all the Printables
+            //helloBye.Print();
+            //Console.ReadKey();
+            //#endregion
+
+            #region DecoratorDemo
+            IMessage msg = new Message();
+            msg.Msg = "Hello";
+            // The variable msg is of the base class Message stored in type
+            // IMessage so it is accessible to the decorators.
+            IMessage decorator = new EmailDecorator(
+                new FaxDecorator(
+                    new ExternalSystemDecorator(msg)));
+            // When run, the above processes from the inside out, sending 
+            // external, then fax, then email.  The database call from 
+            // the base Message class went first because the decorators all
+            // inherit the "innerMessage" behavor from the BaseDecorator class
+            // in combination with using base.Process() before their own processes.
+            decorator.Process();
+            Console.WriteLine();
+            decorator = new EmailDecorator(msg);
+            decorator.Msg = "Bye";
+            decorator.Process();
             Console.ReadKey();
+
             #endregion
-
-
         }
     }
 }
