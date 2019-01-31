@@ -80,6 +80,13 @@ namespace DesignPatterns
             //Console.ReadLine();
 
             #endregion
+
+            #region StrategyDemo
+
+            //Game game = new Game();
+            //game.RunGame();
+
+            #endregion
         }
     }
 }
