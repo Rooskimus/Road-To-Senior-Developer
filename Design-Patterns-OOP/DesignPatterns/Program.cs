@@ -10,7 +10,10 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
-            //#region CompositeDemo
+            // The guts of each demo are commented out so I could test just
+            // one at a time.
+
+            #region CompositeDemo
             //// Composite Demo:
             //Writing hello = new Writing();
             //hello.Add(new Symbol('h'));
@@ -40,27 +43,41 @@ namespace DesignPatterns
             //// Print all the Printables
             //helloBye.Print();
             //Console.ReadKey();
-            //#endregion
+            #endregion
 
             #region DecoratorDemo
-            IMessage msg = new Message();
-            msg.Msg = "Hello";
-            // The variable msg is of the base class Message stored in type
-            // IMessage so it is accessible to the decorators.
-            IMessage decorator = new EmailDecorator(
-                new FaxDecorator(
-                    new ExternalSystemDecorator(msg)));
-            // When run, the above processes from the inside out, sending 
-            // external, then fax, then email.  The database call from 
-            // the base Message class went first because the decorators all
-            // inherit the "innerMessage" behavor from the BaseDecorator class
-            // in combination with using base.Process() before their own processes.
-            decorator.Process();
-            Console.WriteLine();
-            decorator = new EmailDecorator(msg);
-            decorator.Msg = "Bye";
-            decorator.Process();
-            Console.ReadKey();
+            //IMessage msg = new Message();
+            //msg.Msg = "Hello";
+            //// The variable msg is of the base class Message stored in type
+            //// IMessage so it is accessible to the decorators.
+            //IMessage decorator = new EmailDecorator(
+            //    new FaxDecorator(
+            //        new ExternalSystemDecorator(msg)));
+            //// When run, the above processes from the inside out, sending 
+            //// external, then fax, then email.  The database call from 
+            //// the base Message class went first because the decorators all
+            //// inherit the "innerMessage" behavor from the BaseDecorator class
+            //// in combination with using base.Process() before their own processes.
+            //decorator.Process();
+            //Console.WriteLine();
+            //decorator = new EmailDecorator(msg);
+            //decorator.Msg = "Bye";
+            //decorator.Process();
+            //Console.ReadKey();
+
+            #endregion
+
+            #region ObserverDemo
+
+            //Stock stock = new Stock("Cheese");
+            //stock.NoOfItemsInStock = 10;
+            //// Register observers
+            //Seller seller = new Seller();
+            //stock.Attach(seller);
+            //Buyer buyer = new Buyer();
+            //stock.Attach(buyer);
+            //stock.NoOfItemsInStock = 5;
+            //Console.ReadLine();
 
             #endregion
         }
