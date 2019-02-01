@@ -87,6 +87,13 @@ namespace DesignPatterns
             //game.RunGame();
 
             #endregion
+
+            #region LazyDemo
+
+            //LazyDemo demo = new LazyDemo();
+            //demo.RunDemo();
+
+            #endregion
         }
     }
 }
