@@ -244,6 +244,7 @@
     <Compile Include="Common\HostHeaderTenantIdentifierStrategy.cs" />
     <Compile Include="Common\ITenantIdentifierStrategy.cs" />
     <Compile Include="Common\QueryStringTenantIdentifierStrategy.cs" />
+    <Compile Include="Common\SourceIPTenantIdentifierStrategy.cs" />
     <Compile Include="Common\SubnetMask.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
