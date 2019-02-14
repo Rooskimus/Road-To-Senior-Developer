@@ -7,6 +7,15 @@ using System.Web.Routing;
 
 namespace Multitennant.Common
 {
+
+    // for our demo, we must add some mappings wherever we plan to use this:
+    // var s = new IPTenantIdentifierStrategy();
+    // s.Add(IPAddress.Parse("200.200.200.0", 24), "abc.com");
+    // s.Add(IPAddress.Parse("160.160.160.1"), "xyz.net");
+
+    // This maps xyz.net to a single IP address, and abc.com to a 24-bit range so everything from
+    // 200.200.200.0-254.
+
     public class IPTenantIdentifierStrategy : ITenantIdentifierStrategy
     {
 
