@@ -14,7 +14,7 @@ namespace Multitennant.Common
 
     // This maps all client requests coming from some.domain to abc.com.
     // The tenant's name is dropped in the xyz.net mapping because
-    // it will be identical to the domain name (it's handled by the overlaods).
+    // it will be identical to the domain name (it's handled by the overloads).
     public class DomainTenantIdentifierStrategy : ITenantIdentifierStrategy
     {
 
