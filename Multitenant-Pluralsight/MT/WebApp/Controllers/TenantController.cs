@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using WebApp.Models;
@@ -9,34 +11,13 @@ namespace WebApp.Controllers
 {
     public class TenantController : Controller
     {
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            var tenants = new List<Tenant>
+            using (var context = new MultiTenantContext())
             {
-                new Tenant()
-                {
-                    Name = "SVCC",
-                    DomainName = "www.siliconvalley-codecamp.com",
-                    Id = 1,
-                    Default = true
-                },
-                new Tenant()
-                {
-                    Name = "ANGU",
-                    DomainName = "angularu.com",
-                    Id = 3,
-                    Default = false
-                },
-                new Tenant()
-                {
-                    Name = "CSSC",
-                    DomainName = "codestarssummit.com",
-                    Id = 2,
-                    Default = false
-                }
-            };
-
-            return View(tenants);
+                var tenants = await context.Tenants.ToListAsync();
+                return View(tenants);
+            }
         }
     }
 }
