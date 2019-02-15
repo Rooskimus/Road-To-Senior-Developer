@@ -47,7 +47,7 @@ namespace WebApp
             int cacheTimeOutSeconds = 30;
 
             List<Tenant> tenants =
-                TCache<List<Tenant>>.Get(
+                new TCache<List<Tenant>>().Get(
                     cacheName, cacheTimeOutSeconds,
                     () =>
                     {
