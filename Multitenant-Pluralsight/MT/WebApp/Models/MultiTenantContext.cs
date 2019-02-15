@@ -89,7 +89,49 @@ namespace WebApp.Models
 
         private void CreateSessions(MultiTenantContext context)
         {
-            // Resume here!
+            var sessionJsonAll = GetEmbeddedResourceAsString("WebApp.session.json");
+            var tenants = context.Tenants.ToList();
+            JArray jsonValSessions = JArray.Parse(sessionJsonAll) as JArray;
+            dynamic sessionsData = jsonValSessions;
+
+            var sessionTenantDict = new Dictionary<int, string>();
+
+            foreach (dynamic session in sessionsData)
+            {
+                sessionTenantDict.Add((int)session.id, (string)session.tenantName);
+
+                var sessionForAdd = new Session
+                {
+                    SessionId = session.id,
+                    Description = session.description,
+                    DescriptionShort = session.descriptionShort,
+                    Title = session.title
+                };
+
+                var speakerPictureIds = new List<int>();
+                foreach (dynamic speaker in session.speakers)
+                {
+                    dynamic pictureId = speaker.id;
+                    speakerPictureIds.Add((int)pictureId);
+                }
+
+                sessionForAdd.Speakers = new List<Speaker>();
+                foreach (var speakerPictureId in speakerPictureIds)
+                {
+                    var speakerForAdd = context.Speakers.FirstOrDefault(a =>
+                        a.PictureId == speakerPictureId);
+                    sessionForAdd.Speakers.Add(speakerForAdd);
+                }
+                context.Sessions.Add(sessionForAdd);
+            }
+            context.SaveChanges();
+            foreach (var session in context.Sessions)
+            {
+                var tenant = tenants.
+                    FirstOrDefault(a => a.Name == sessionTenantDict[session.SessionId]);
+                session.Tenant = tenant;
+            }
+            context.SaveChanges();
         }
 
         private string GetEmbeddedResourceAsString(string resourceName)
