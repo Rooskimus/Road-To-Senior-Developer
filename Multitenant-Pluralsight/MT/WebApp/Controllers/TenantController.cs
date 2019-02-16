@@ -9,7 +9,7 @@ using WebApp.Models;
 
 namespace WebApp.Controllers
 {
-    public class TenantController : Controller
+    public class TenantController : MultiTenantMvcController
     {
         public async Task<ActionResult> Index()
         {

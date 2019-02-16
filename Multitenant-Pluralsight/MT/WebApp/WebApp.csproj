@@ -163,6 +163,7 @@
     <Compile Include="Models\Session.cs" />
     <Compile Include="Models\Speaker.cs" />
     <Compile Include="Models\Tenant.cs" />
+    <Compile Include="MultiTenantViewEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="TCacheInternal.cs" />
@@ -207,10 +208,11 @@
     <Content Include="Views\Tenant\Index.cshtml" />
     <EmbeddedResource Include="session.json" />
     <EmbeddedResource Include="speaker.json" />
-    <Content Include="Views\Speaker\Index.cshtml" />
+    <Content Include="Views\SVCC\Speaker\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Speaker\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

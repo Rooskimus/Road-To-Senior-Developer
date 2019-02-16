@@ -7,7 +7,7 @@ using WebApp.Models;
 
 namespace WebApp.Controllers
 {
-    public class SessionController : Controller
+    public class SessionController : MultiTenantMvcController
     {
         public ActionResult Index()
         {
