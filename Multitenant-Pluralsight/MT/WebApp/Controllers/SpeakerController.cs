@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using WebApp.Models;
 
@@ -13,6 +12,7 @@ namespace WebApp.Controllers
     {
         private MultiTenantContext context = new MultiTenantContext();
 
+        [MultiTenantControllerAllow("svcc,cssc")]
         public async Task<ActionResult> Index()
         {
             Task<List<Speaker>> speakersAll =
