@@ -26,7 +26,9 @@ namespace WebApp.Controllers
 
             var speakers = new List<Speaker>();
             speakers = new List<Speaker>();
-            foreach (var speaker in await speakersAll)
+            foreach (var speaker in await speakersAll) 
+                // The "await" needs to be added where the function would be calling the thing containted within the Task<>.
+                // In this case, our foreach is really wanting a List, not a Task.  Our speakersAll is really a Task<List> without the await.
             {
                 bool speakerInTenant =
                     speaker.Sessions.
