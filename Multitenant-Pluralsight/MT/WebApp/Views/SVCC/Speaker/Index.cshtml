@@ -1,4 +1,6 @@
-﻿@model WebApp.Models.Tenant
+﻿@using WebApp.Models
+@model List<WebApp.Models.Speaker>
+
 
 @{
     Layout = null;
@@ -9,11 +11,17 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Speaker</title>
+    <title>Speakers at SVCC</title>
 </head>
 <body>
     <div> 
-        Tenant Name: @Model.Name
+        @foreach (var speaker in Model)
+        {        
+            <span>
+                @speaker.FirstName @speaker.LastName 
+            </span>
+            <br/>
+         }
     </div>
 </body>
 </html>

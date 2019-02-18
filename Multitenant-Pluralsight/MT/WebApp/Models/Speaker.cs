@@ -16,6 +16,6 @@ namespace WebApp.Models
         public bool AllowHtml { get; set; }
         public int PictureId { get; set; }
 
-        public List<Session> Sessions { get; set; }
+        public virtual List<Session> Sessions { get; set; }
     }
 }
