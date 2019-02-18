@@ -12,7 +12,7 @@ namespace WebApp.Controllers
     {
         private MultiTenantContext context = new MultiTenantContext();
 
-        [MultiTenantControllerAllow("svcc,cssc")]
+        [MultiTenantControllerAllow("svcc,angu")]
         public async Task<ActionResult> Index()
         {
             Task<List<Speaker>> speakersAll =
@@ -51,7 +51,7 @@ namespace WebApp.Controllers
                     });
                 }
             }
-            return View("Index", speakers);
+            return View("Index", "_Layout", speakers);
         }
     }
 }
