@@ -44,6 +44,8 @@ namespace WebApp.Controllers
                         Bio = speaker.Bio,
                         AllowHtml = speaker.AllowHtml,
                         WebSite = speaker.WebSite,
+                        ImageUrl = 
+                        $"/Content/Images/Speakers/Speaker-{speaker.PictureId}-75.jpg",
                         Sessions =
                             speaker.Sessions.
                             Where(a => a.Tenant.Name == Tenant.Name).
