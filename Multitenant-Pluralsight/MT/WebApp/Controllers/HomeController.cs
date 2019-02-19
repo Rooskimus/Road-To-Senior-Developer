@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebApp.Models;
 
 namespace WebApp.Controllers
 {
@@ -10,21 +11,32 @@ namespace WebApp.Controllers
     {
         public ActionResult Index()
         {
+            if (Tenant.Name == "CSSC")
+            {
+                using (var context = new MultiTenantContext())
+                {
+                    var sessions = context.Sessions.Where(a => a.Tenant.Name == Tenant.Name).
+                        OrderBy(a => a.Title.ToLower()).ToList();
+
+                    foreach (var session in sessions)
+                    {
+                        foreach (var speaker in session.Speakers)
+                        {
+                            speaker.ImageUrl = $"/Content/Images/Speakers/Speaker-{speaker.PictureId}-75.jpg";
+                        }
+                    }
+                    return View("Index", "_Layout", sessions);
+                }
+            }
+
             return View();
         }
 
-        public ActionResult About()
+        [MultiTenantControllerAllow("cssc")]
+        public ActionResult CodeOfConduct()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }

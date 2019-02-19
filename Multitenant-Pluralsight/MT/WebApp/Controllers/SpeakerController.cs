@@ -55,5 +55,32 @@ namespace WebApp.Controllers
             }
             return View("Index", "_Layout", speakers);
         }
+
+
+        [MultiTenantControllerAllow("svcc")]
+        public async Task<ActionResult> Detail(string id = null)
+        {
+            using (var context = new MultiTenantContext())
+            {
+                // add cache here
+                var speakers = await context.Speakers.ToListAsync();
+
+                var speakerUrlDictionary = speakers.ToDictionary(k => k.SpeakerUrl);
+                Speaker speaker = new Speaker();
+                if (speakerUrlDictionary.ContainsKey(id))
+                {
+                    speaker = speakerUrlDictionary[id];
+
+                    speaker.ImageUrl = $"/Content/Images/Speakers/Speaker-{speaker.PictureId}-75.jpg";
+                    var sessions =
+                        speaker.Sessions.
+                            Where(a => a.Tenant.Name == Tenant.Name).
+                            OrderBy(a => a.Title).ToList();
+                    speaker.Sessions = sessions;
+                }
+
+                return View("Detail", "_Layout", speaker);
+            }
+        }
     }
 }
