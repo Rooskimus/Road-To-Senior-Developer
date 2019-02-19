@@ -37,7 +37,7 @@ namespace WebApp.Controllers
             {
                 // add cache here
                 var sessions = Utils.FilterSessionsByTenant(context.Sessions.ToList(), Tenant.Name);
-
+                
                 var sessionUrlDictionary = sessions.ToDictionary(k => k.SessionUrl);
                 var session = new Session();
                 if (sessionUrlDictionary.ContainsKey(id))

@@ -160,6 +160,10 @@
     <Compile Include="Migrations\201902142307017_add speakers and sessons.Designer.cs">
       <DependentUpon>201902142307017_add speakers and sessons.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902190114435_AddUrlAttributesToSessionAndSpeaker.cs" />
+    <Compile Include="Migrations\201902190114435_AddUrlAttributesToSessionAndSpeaker.Designer.cs">
+      <DependentUpon>201902190114435_AddUrlAttributesToSessionAndSpeaker.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\MultiTenantContext.cs" />
     <Compile Include="Models\Session.cs" />
@@ -880,6 +884,23 @@
     <Content Include="Content\Images\Speakers\Speaker-9727-75.jpg" />
     <Content Include="Content\Images\Speakers\Speaker-9952-75.jpg" />
     <Content Include="Content\Images\Speakers\Speaker-9970-75.jpg" />
+    <Content Include="Content\JavaScript\bxslider\images\bx_loader.gif" />
+    <Content Include="Content\JavaScript\bxslider\images\controls.png" />
+    <Content Include="Content\JavaScript\bxslider\jquery.bxslider.css" />
+    <Content Include="Content\JavaScript\bxslider\jquery.bxslider.js" />
+    <Content Include="Content\JavaScript\bxslider\jquery.bxslider.min.js" />
+    <Content Include="Content\JavaScript\bxslider\plugins\jquery.easing.1.3.js" />
+    <Content Include="Content\JavaScript\bxslider\plugins\jquery.fitvids.js" />
+    <Content Include="Content\JavaScript\jquery-1.10.1.js" />
+    <Content Include="Content\JavaScript\jquery-1.10.1.min.js" />
+    <Content Include="Content\JavaScript\jquery-migrate-1.2.1.min.js" />
+    <Content Include="Content\JavaScript\main-cssc.js" />
+    <Content Include="Content\JavaScript\tappize\tappize.js" />
+    <Content Include="Content\JavaScript\tappize\tappize.min.js" />
+    <Content Include="Content\JavaScript\validate\jquery.validate.js" />
+    <Content Include="Content\JavaScript\validate\jquery.validate.min.js" />
+    <Content Include="Content\JavaScript\validate\jquery.validate.unobtrusive.js" />
+    <Content Include="Content\JavaScript\validate\jquery.validate.unobtrusive.min.js" />
     <Content Include="Content\SVCC\Fonts\AntennaLight\antenna-light-demo.html" />
     <Content Include="Content\SVCC\Fonts\AntennaLight\antenna-light-webfont.svg" />
     <Content Include="Content\SVCC\Fonts\AntennaLight\generator_config.txt" />
@@ -1196,6 +1217,7 @@
     <Content Include="Content\SVCC\ng\Content\Fonts\Yanone_Kaffeesatz\yanonekaffeesatz-regular-webfont.eot" />
     <Content Include="Content\SVCC\ng\Content\Fonts\Yanone_Kaffeesatz\yanonekaffeesatz-regular-webfont.ttf" />
     <Content Include="Content\SVCC\ng\Content\Fonts\Yanone_Kaffeesatz\yanonekaffeesatz-regular-webfont.woff" />
+    <Content Include="Content\JavaScript\bxslider\readme.md" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -1222,6 +1244,9 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Tenant\Index.cshtml" />
+    <EmbeddedResource Include="Migrations\201902190114435_AddUrlAttributesToSessionAndSpeaker.resx">
+      <DependentUpon>201902190114435_AddUrlAttributesToSessionAndSpeaker.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="session.json" />
     <EmbeddedResource Include="speaker.json" />
     <Content Include="Views\SVCC\Speaker\Index.cshtml" />
@@ -1233,6 +1258,11 @@
     <Content Include="Views\SVCC\Session\Detail.cshtml" />
     <Content Include="Views\SVCC\Session\Index.cshtml" />
     <Content Include="Views\SVCC\Home\Index.cshtml" />
+    <Content Include="Views\CSSC\Home\CodeOfConduct.cshtml" />
+    <Content Include="Views\CSSC\Session\Detail.cshtml" />
+    <Content Include="Views\CSSC\Shared\_Layout.cshtml" />
+    <Content Include="Views\CSSC\Shared\_TopMenu.cshtml" />
+    <Content Include="Views\CSSC\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
